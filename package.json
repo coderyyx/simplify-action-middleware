@@ -1,0 +1,35 @@
+{
+  "name": "simplify-action-middleware",
+  "version": "1.0.0",
+  "description": "提高redux 的dispatch的能力，精简action部分。为了兼容目前框架，采用jquery进行web请求后期可改为whatwg-fetch",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coderyyx/simplify-action-middleware.git"
+  },
+  "keywords": [
+    "redux",
+    "middleware"
+  ],
+  "author": "yyx",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/coderyyx/simplify-action-middleware/issues"
+  },
+  "homepage": "https://github.com/coderyyx/simplify-action-middleware#readme",
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-core": "^6.10.4",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "lodash": "^4.17.4",
+    "webpack": "^1.13.1",
+    "jquery": "^3.2.1",
+    "util": "^0.10.3"
+  },
+  "dependencies": {}
+}
