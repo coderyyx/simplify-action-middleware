@@ -3,24 +3,7 @@
  */
 import $ from 'jquery';
 
-// type : 'post',
-// url : '../patient/importCaseList',
-// contentType : "application/x-www-form-urlencoded;charset=utf-8;",
-// data:{"params":JSON.stringify(postData)},
-// async : true,
-// success : function (data) {
-//   if(data.result && data.result=='success'){
-//     return dispatch(getImportSuccess('LOADED',data));
-//   }else{
-//     showError(data.reason);
-//     return dispatch(getImportFail('LOADED'));
-//   }
-// },
-// error:function (xhr, status, err) {
-//   Tool.sessionTimeOut.logOut(xhr);
-//   console.log(err);
-// }
- const request = (configObj) =>{
+const request = (configObj) =>{
 
     let {
             method,
@@ -31,13 +14,17 @@ import $ from 'jquery';
             next,
             successAlert,
             errorAlert,
+            sessionTimeOut,
             request_start,
-            request_receive_data
+            request_receive_data,
+            request_error
         } = configObj;
-
+    
+    method = method ? method :'POST';
     contentType = contentType ? contentType : "application/x-www-form-urlencoded;charset=utf-8;";
     data = data ? data : {};
     async = async ? async : true;
+    
 
     if(!url){
         alert('url not be empty!');
@@ -57,12 +44,14 @@ import $ from 'jquery';
         success : function(data){
             if(typeof data === 'string')
                 data = JSON.parse(data);
-            if(data.result && data.result==='success'){
+            if(data.result && data.result==='success')
                 request_receive_data(data);
-            }
+            else
+                request_error();
         },
         error : function(xhr, status, err){
-
+            sessionTimeOut(xhr);
+            console.log(err);
         }
     })
  }
