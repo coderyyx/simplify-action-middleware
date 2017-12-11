@@ -1,6 +1,6 @@
 {
   "name": "simplify-action-middleware",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "提高redux 的dispatch的能力，精简action部分。为了兼容目前框架，采用jquery进行web请求后期可改为whatwg-fetch",
   "main": "index.js",
   "scripts": {
@@ -31,5 +31,8 @@
     "jquery": "^3.2.1",
     "util": "^0.10.3"
   },
-  "dependencies": {}
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "util": "^0.10.3"
+  }
 }
