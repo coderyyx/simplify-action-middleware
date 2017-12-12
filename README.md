@@ -1,6 +1,5 @@
 # simplify-action-middleware
-提高redux 的dispatch的能力，精简action部分。为了兼容目前框架，采用jquery进行web请求后期可改为whatwg-fetch；
-部分内容需要配置，如果有额外需求的同学可以联系我~~
+简化对redux异步action的处理中间件，兼容其他异步处理中间件，thunk等...
 ___________________________________________
 
 
@@ -22,7 +21,7 @@ ___________________________________________
 <code>npm install simplify-action-middleware</code>
 
 ## Tips
-如果对于options配置项有更多需求的可以联系我，大家一起丰富。
+如果对于options配置项有更多需求的可以提issues，大家一起丰富。
 ___________________________________________
 ## Usage simplify-action-middleware
 
@@ -60,13 +59,13 @@ export const searchTreatCases = (postData) =>{
 configObj :
     url , 
     types , 
-    method , 
+    method , //post
     data , 
-    async, 
+    async, //默认true
     timeout,//默认最大值 Number.MAX_VALUE
-    contentType
+    contentType // 默认 "application/x-www-form-urlencoded;charset=utf-8;"
 ```
-只需要传入一些请求必须的参数，需要拓展的可以联系我；
+只需要传入一些请求必须的参数；
 目前我们仍引用了juqery库作为web请求的库（import $ form ‘jquery’），
 后期随着项目的改进可改为fetch。
 
