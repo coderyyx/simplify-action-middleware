@@ -11,7 +11,7 @@ const request = (configObj) =>{
             url,
             async,
             contentType,
-            next,
+            timeout,
             successAlert,
             errorAlert,
             sessionTimeOut,
@@ -24,6 +24,7 @@ const request = (configObj) =>{
     contentType = contentType ? contentType : "application/x-www-form-urlencoded;charset=utf-8;";
     data = data ? data : {};
     async = async ? async : true;
+    timeout = timeout ? timeout : Number.MAX_VALUE;
     successAlert = successAlert ? successAlert : window.alert;
     errorAlert = errorAlert ? errorAlert : window.alert;
 
@@ -42,6 +43,7 @@ const request = (configObj) =>{
         data : data,
         contentType : contentType,
         async : async,
+        timeout:timeout,
         success : function(data){
             if(typeof data === 'string')
                 data = JSON.parse(data);

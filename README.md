@@ -63,6 +63,7 @@ configObj :
     method , 
     data , 
     async, 
+    timeout,//默认最大值 Number.MAX_VALUE
     contentType
 ```
 只需要传入一些请求必须的参数，需要拓展的可以联系我；

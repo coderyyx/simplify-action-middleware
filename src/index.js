@@ -12,6 +12,7 @@ const simplifyMiddleware = options => store => next => action =>{
             method , 
             data , 
             async, 
+            timeout,
             contentType
         } = action;
     
@@ -61,6 +62,7 @@ const simplifyMiddleware = options => store => next => action =>{
         url ,
         data , 
         async , 
+        timeout,
         contentType,
         sessionTimeOut,
         request_start:request_start(next,LOADING),
