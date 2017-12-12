@@ -24,7 +24,8 @@ const request = (configObj) =>{
     contentType = contentType ? contentType : "application/x-www-form-urlencoded;charset=utf-8;";
     data = data ? data : {};
     async = async ? async : true;
-    
+    successAlert = successAlert ? successAlert : window.alert;
+    errorAlert = errorAlert ? errorAlert : window.alert;
 
     if(!url){
         alert('url not be empty!');
@@ -46,8 +47,11 @@ const request = (configObj) =>{
                 data = JSON.parse(data);
             if(data.result && data.result==='success')
                 request_receive_data(data);
-            else
+            else{
+                errorAlert(data.reason?data.reason:'fail');
                 request_error();
+            }
+                
         },
         error : function(xhr, status, err){
             sessionTimeOut(xhr);
