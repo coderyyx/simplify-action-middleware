@@ -58,7 +58,7 @@ export const searchTreatCases = (postData) =>{
 配置对象：
 configObj :
     url , 
-    types , 
+    types , //为三种不同类型action状态，分别为开始请求、请求成功、请求失败，没有的类型请用''或null代替
     method , //post
     data , 
     async, //默认true

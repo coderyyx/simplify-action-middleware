@@ -3,6 +3,8 @@
  */
 import $ from 'jquery';
 
+const noop = ()=>{};
+
 const request = (configObj) =>{
 
     let {
@@ -25,6 +27,7 @@ const request = (configObj) =>{
     data = data ? data : {};
     async = async ? async : true;
     timeout = timeout ? timeout : Number.MAX_VALUE;
+    sessionTimeOut = sessionTimeOut ? sessionTimeOut : noop;
     successAlert = successAlert ? successAlert : window.alert;
     errorAlert = errorAlert ? errorAlert : window.alert;
 
