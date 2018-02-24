@@ -1,3 +1,3 @@
-import silplify from './lib/bundle';
+import silplify from './lib/index.js';
 
 export default silplify;
