@@ -70,3 +70,9 @@ configObj :
 后期随着项目的改进可改为fetch。
 
 
+##develop
+```javascript
+    1、npm install
+    2、npx babel src --out-dir lib
+    3、npm publish
+```

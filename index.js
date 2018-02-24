@@ -1,3 +1,3 @@
-import silplify from './lib/index.js';
+const simplify = require('./lib/index.js');
 
-export default silplify;
+exports = module.exports = simplify;
