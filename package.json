@@ -1,11 +1,11 @@
 {
   "name": "simplify-action-middleware",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "description": "提高redux 的dispatch的能力，精简action部分。为了兼容目前框架，采用jquery进行web请求后期可改为whatwg-fetch",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build":"npx babel src --out-dir lib",
+    "build": "npx babel src --out-dir lib",
     "pub": "npm config set registry https://registry.npmjs.org && git add . && git commit -m 'publish' && git push && npm version patch && npm publish"
   },
   "repository": {
