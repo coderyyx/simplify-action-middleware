@@ -17,7 +17,7 @@ ___________________________________________
 [downloads-image]: https://img.shields.io/npm/dm/simplify-action-middleware.svg?style=flat
 [downloads-url]: https://npmjs.org/package/simplify-action-middleware
 
-##install:
+## install:
 <code>npm install simplify-action-middleware</code>
 
 ## Tips
@@ -28,7 +28,7 @@ ___________________________________________
 ```javascript
 import simplify  from 'simplify-action-middleware';
 ```
-##redux中间件的目的是在action阶段做一些处理，用来增强dispatch的能力
+redux中间件的目的是在action阶段做一些处理，用来增强dispatch的能力
 所以我们在创建sotre的时候注入中间件，并且与其他中间件兼容，开发这个中间件的目的是为了简化
 action过程的一些操作，同时处理了**异步action**，在对现有项目改造阶段同时引入
 thunk和simplify,
@@ -70,7 +70,7 @@ configObj :
 后期随着项目的改进可改为fetch。
 
 
-##develop
+## develop
 ```javascript
     1、npm install
     2、npx babel src --out-dir lib
