@@ -67,7 +67,7 @@ configObj :
 ```
 只需要传入一些请求必须的参数；
 目前我们仍引用了juqery库作为web请求的库（import $ form ‘jquery’），
-后期随着项目的改进可改为fetch。
+后期随着项目的改进可改为fetch等库。
 
 
 ##develop
