@@ -6,26 +6,28 @@ const simplifyMiddleware = options => store => next => action =>{
     let {successAlert,errorAlert,sessionTimeOut} = options;
     let {dispatch,getState} = store;
 
+    // init configObject
     let { 
             url , 
-            types , 
-            method , 
-            data , 
-            async, 
-            timeout,
-            contentType
+            types = [null,null,null], 
+            method = 'POST', 
+            data = {}, 
+            async = true, 
+            timeout = 20*1000,
+            contentType = "application/x-www-form-urlencoded;charset=utf-8;"
         } = action;
     /**
      * 防止types解构失败，初始化types
      */
-    types = types ? types :[null,null,null];
+    // types = types ? types :[null,null,null];
+
     /**
      * 以url为非标准action唯一依据
      * 标准action进入下一个中间件
      */
     if(!url){
         next(action);
-        //不执行后续代码
+        //退出当前中间件
         return;
     }
 
@@ -53,9 +55,10 @@ const simplifyMiddleware = options => store => next => action =>{
 
     //network error or server error
     function request_error(next,ERROR){
-        return ()=>next({
+        return (result)=>next({
             type : ERROR,
-            path : 'LOADED'
+            path : 'LOADED',
+            data : result
         });
     }
 

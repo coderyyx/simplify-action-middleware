@@ -1,5 +1,5 @@
 /**
- * 传入一个对象形成jquery请求
+ * api fetch
  */
 import $ from 'jquery';
 
@@ -22,11 +22,11 @@ const request = (configObj) =>{
             request_error
         } = configObj;
     
-    method = method ? method :'POST';
-    contentType = contentType ? contentType : "application/x-www-form-urlencoded;charset=utf-8;";
-    data = data ? data : {};
-    async = async ? async : true;
-    timeout = timeout ? timeout : 20*1000;
+    // method = method ? method :'POST';
+    // contentType = contentType ? contentType : "application/x-www-form-urlencoded;charset=utf-8;";
+    // data = data ? data : {};
+    // async = async ? async : true;
+    // timeout = timeout ? timeout : 20*1000;
     sessionTimeOut = sessionTimeOut ? sessionTimeOut : noop;
     successAlert = successAlert ? successAlert : window.alert;
     errorAlert = errorAlert ? errorAlert : window.alert;
@@ -54,7 +54,7 @@ const request = (configObj) =>{
                 request_receive_data(data);
             else{
                 errorAlert(data.reason?data.reason:'fail');
-                request_error();
+                request_error(data);
             }
                 
         },
