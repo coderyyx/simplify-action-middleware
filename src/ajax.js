@@ -14,12 +14,14 @@ const request = (configObj) =>{
             async,
             contentType,
             timeout,
+            request_start,
+            request_receive_data,
+            request_error,
             successAlert,
             errorAlert,
             sessionTimeOut,
-            request_start,
-            request_receive_data,
-            request_error
+            equalsField = 'result',
+            errorField = 'message'
         } = configObj;
     
     // method = method ? method :'POST';
@@ -50,10 +52,10 @@ const request = (configObj) =>{
         success : function(data){
             if(typeof data === 'string')
                 data = JSON.parse(data);
-            if(data.result && data.result==='success')
+            if(data[equalsField] && data[equalsField]==='success')
                 request_receive_data(data);
             else{
-                errorAlert(data.reason?data.reason:'fail');
+                errorAlert(data[errorField] ? data[errorField] : 'fail');
                 request_error(data);
             }
                 

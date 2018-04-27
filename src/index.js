@@ -3,7 +3,14 @@ import $ from 'jquery';
 import request from './ajax';
 
 const simplifyMiddleware = options => store => next => action =>{
-    let {successAlert,errorAlert,sessionTimeOut} = options;
+    // let {
+    //     successAlert,
+    //     errorAlert,
+    //     sessionTimeOut,
+    //     equalsField = 'result',
+    //     errorField = 'message'
+    // } = options;
+
     let {dispatch,getState} = store;
 
     // init configObject
@@ -70,10 +77,10 @@ const simplifyMiddleware = options => store => next => action =>{
         async , 
         timeout,
         contentType,
-        sessionTimeOut,
         request_start:request_start(next,LOADING),
         request_receive_data:request_receive_data(next,SUCCESS),
-        request_error:request_error(next,ERROR)
+        request_error:request_error(next,ERROR),
+        ...options
     })
 }
 
