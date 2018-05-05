@@ -69,7 +69,9 @@ configObj :
 目前我们仍引用了juqery库作为web请求的库（import $ form ‘jquery’），
 后期随着项目的改进可改为fetch等库。
 
-
+## future
+ 对于瞬间请求过多的情况下、以后考虑加入requestMQ特性
+ 
 ## develop
 ```javascript
     1、npm install

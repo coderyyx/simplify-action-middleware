@@ -5,36 +5,27 @@ import $ from 'jquery';
 
 const noop = ()=>{};
 
-const request = (configObj) =>{
-
+const request = (requestObj) =>{
     let {
-            method,
-            data,
+            method = 'POST',
+            data = {},
             url,
-            async,
-            contentType,
-            timeout,
+            async = true,
+            contentType = "application/x-www-form-urlencoded;charset=utf-8;",
+            timeout = 20*1000,
             request_start,
             request_receive_data,
             request_error,
-            successAlert,
-            errorAlert,
-            sessionTimeOut,
+            successAlert = window.alert,
+            errorAlert = window.alert,
+            sessionTimeOut = noop,
             equalsField = 'result',
             errorField = 'message'
-        } = configObj;
+        } = requestObj;
     
-    // method = method ? method :'POST';
-    // contentType = contentType ? contentType : "application/x-www-form-urlencoded;charset=utf-8;";
-    // data = data ? data : {};
-    // async = async ? async : true;
-    // timeout = timeout ? timeout : 20*1000;
-    sessionTimeOut = sessionTimeOut ? sessionTimeOut : noop;
-    successAlert = successAlert ? successAlert : window.alert;
-    errorAlert = errorAlert ? errorAlert : window.alert;
 
     if(!url){
-        alert('url not be empty!');
+        errorAlert('url can not be empty!');
         return;
     }
 
@@ -44,11 +35,11 @@ const request = (configObj) =>{
     //web request
     $.ajax({
         type : method,
-        url : url,
-        data : data,
-        contentType : contentType,
-        async : async,
-        timeout:timeout,
+        url ,
+        data ,
+        contentType ,
+        async ,
+        timeout ,
         success : function(data){
             if(typeof data === 'string')
                 data = JSON.parse(data);
@@ -62,6 +53,7 @@ const request = (configObj) =>{
         },
         error : function(xhr, status, err){
             sessionTimeOut(xhr);
+            request_error(data);
             console.log(err);
         }
     })
