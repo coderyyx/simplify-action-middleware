@@ -8,6 +8,7 @@ const simplifyMiddleware = options => store => next => action =>{
 
     // init configObject
     let { 
+            url,
             types = [null,null,null]
         } = action;
     /**
@@ -53,12 +54,6 @@ const simplifyMiddleware = options => store => next => action =>{
 
     //异步请求
     request({
-        method ,
-        url ,
-        data , 
-        async , 
-        timeout,
-        contentType,
         request_start:request_start(next,LOADING),
         request_receive_data:request_receive_data(next,SUCCESS),
         request_error:request_error(next,ERROR),
