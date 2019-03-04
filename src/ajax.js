@@ -31,6 +31,7 @@ const request = (requestObj) =>{
             equalsField = 'result',
             errorField = 'message',
             withCredentials,
+            beforeSend = noop,
         } = requestObj;
     
 
@@ -51,6 +52,9 @@ const request = (requestObj) =>{
         async ,
         timeout ,
         ...cookieConfig,
+        beforeSend: function(xhr) { 
+            beforeSend(xhr);
+        },
         success : function(data){
             if(typeof data === 'string')
                 data = JSON.parse(data);
