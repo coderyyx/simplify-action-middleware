@@ -4,7 +4,16 @@
 import $ from 'jquery';
 
 const noop = ()=>{};
-
+const shouldWithCookie = (withCredentials) => {
+    if (withCredentials) {
+        return {
+            xhrFields: {
+                withCredentials: true
+              }
+        }
+    }
+    return {};
+}
 const request = (requestObj) =>{
     let {
             method = 'POST',
@@ -20,7 +29,8 @@ const request = (requestObj) =>{
             errorAlert = window.alert,
             sessionTimeOut = noop,
             equalsField = 'result',
-            errorField = 'message'
+            errorField = 'message',
+            withCredentials,
         } = requestObj;
     
 
@@ -31,7 +41,7 @@ const request = (requestObj) =>{
 
     //request start
     request_start();
-
+    const cookieConfig = shouldWithCookie(withCredentials);
     //web request
     $.ajax({
         type : method,
@@ -40,6 +50,7 @@ const request = (requestObj) =>{
         contentType ,
         async ,
         timeout ,
+        ...cookieConfig,
         success : function(data){
             if(typeof data === 'string')
                 data = JSON.parse(data);
@@ -53,7 +64,7 @@ const request = (requestObj) =>{
         },
         error : function(xhr, status, err){
             sessionTimeOut(xhr);
-            request_error(data);
+            request_error(err);
             console.log(err);
         }
     })
