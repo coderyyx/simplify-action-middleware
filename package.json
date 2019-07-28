@@ -5,15 +5,14 @@
   "main": "index.js",
   "scripts": {
     "build": "npx babel src --out-dir lib",
-    "pub": "npm config set registry https://registry.npmjs.org && git add . && git commit -m 'publish' && git push && npm version patch && npm publish",
-    "precommit": "lint-staged",
-    "lint": "eslint ./src/** --fix"
+    "pub": "npm config set registry https://registry.npmjs.org && git add . && git commit -m 'publish' && git push && npm version patch && npm publish"
   },
   "lint-staged": {
     "src/**": ["eslint --fix", "git add"]
   },
   "husky": {
     "hooks": {
+      "pre-commit": "lint-staged",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
